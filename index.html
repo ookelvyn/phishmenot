@@ -20,13 +20,13 @@
           </div>
 
           <div> 
-            <p class="p-1">This is an online checklist that needs to be passed to confirm an email is safe or give recommendations if any of the checklist fails</p>
+            <p class="p-1 text-center">This is an online checklist that needs to be passed to confirm an email is safe or give recommendations if any of the checklist fails</p>
           </div>
           <!-- <hr> -->
           <div class="mb-2">
             <ul class="list-group">
               <li class="list-group-item"> <!-- SECTION 2 START -->
-                <p>Are you able to view the email header? 
+                <p id="header1" class="fw-bold">Are you able to view the email header?
                   
                   <input class="form-check-input" type="radio" id="qust1_no" value="no" name="quest1" />
                   <label class="form-check-label" for="flexRadioDefault1">
@@ -42,20 +42,274 @@
                 <div id="qust1_sub_div" style="display: none;"> <!-- Display if yes -->
                   <ul>
                     <hr>
-                    <li>Is there a RETURN-PATH header that is not matching the FROM header?</li>
-                    <li>Are there any domains that do not match in the RECEIVED headers?</li>
-                    <li>Is there a mismatch between the REPLY-TO and FROM headers?</li>
-                    <li>Is there a RECEIVED-SPF header that cannot be verified using whois information?</li>
-                    <li>Is there a DKIM header with the value "none”?</li>
-                    <li>Are any X-HEADERS present to identify it as spam?</li>
+                    <li>
+                      <p>Is there a RETURN-PATH header that is not matching the FROM header?
+                        <input class="form-check-input" type="radio" id="q1_no" value="no" name="qt1" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q1_yes" value="yes" name="qt1" />
+                        <label class="form-check-label">
+                          Yes
+                        </label>
+                      </p>
+                    </li>
+
+                    <li id="Q2" style="display: none;"><p>Are there any domains that do not match in the RECEIVED headers?
+                      <input class="form-check-input" type="radio" id="q2_no" value="no" name="qt2" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q2_yes" value="yes" name="qt2" />
+                        <label class="form-check-label">
+                          Yes
+                        </label>
+                      </p>
+                    </li>
+                    <li id="Q3" style="display: none;"><p>Is there a mismatch between the REPLY-TO and FROM headers?
+                      <input class="form-check-input" type="radio" id="q3_no" value="no" name="qt3" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q3_yes" value="yes" name="qt3" />
+                        <label class="form-check-label">
+                          Yes
+                        </label>
+                      </p>
+                    </li>
+                    <li id="Q4" style="display: none;"><p>Is there a RECEIVED-SPF header that cannot be verified using whois information?
+                      <input class="form-check-input" type="radio" id="q4_no" value="no" name="qt4" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q4_yes" value="yes" name="qt4" />
+                        <label class="form-check-label">
+                          Yes
+                        </label>
+                      </p>
+                    </li>
+                    <li id="Q5" style="display: none;"><p>Is there a DKIM header with the value "none”?
+                      <input class="form-check-input" type="radio" id="q5_no" value="no" name="qt5" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q5_yes" value="yes" name="qt5" />
+                        <label class="form-check-label">
+                          Yes
+                        </label5>
+                      </p>
+                    </li>
+                    <li id="Q6" style="display: none;"><p>Are any X-HEADERS present to identify it as spam?
+                      <input class="form-check-input" type="radio" id="q6_no" value="no" name="qt6" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q6_yes" value="yes" name="qt6" />
+                        <label class="form-check-label">
+                          Yes
+                        </label5>
+                      </p>
+                    </li>
                   </ul>
                 </div> <!-- End display -->
               </li> <!-- SECTION 1 END -->
 
+              <!-- ====Function for the sub 1===== -->
+              <script>
+            $(function () {
+
+              $("input[name='quest1']").click(function () {
+                    if ($("#qust1_yes").is(":checked")) {
+                        $("#qust1_sub_div").show();
+                    } else if ($("#qust1_no").is(":checked")){
+                        $("#Header2").show();
+                    }
+                });
+
+                $("input[name='qt1']").click(function () {
+                    if ($("#q1_no").is(":checked")) {
+                        $("#Q2").show();
+                    } else if ($("#q1_yes").is(":checked")){
+                        $('#submodal1').modal('show');
+                        $("#Q2").show();
+                    }
+                });
+     
+
+                $("input[name='qt2']").click(function () {
+                    if ($("#q2_no").is(":checked")) {
+                        $("#Q3").show();
+                    } else if ($("#q2_yes").is(":checked")){
+                        $('#submodal2').modal('show');
+                        $("#Q3").show();
+                    }
+                });
+
+                $("input[name='qt3']").click(function () {
+                    if ($("#q3_no").is(":checked")) {
+                        $("#Q4").show();
+                    } else if ($("#q3_yes").is(":checked")){
+                        $('#submodal3').modal('show');
+                        $("#Q4").show();
+                    }
+                });
+
+                $("input[name='qt4']").click(function () {
+                    if ($("#q4_no").is(":checked")) {
+                        $("#Q5").show();
+                    } else if ($("#q4_yes").is(":checked")){
+                        $('#submodal4').modal('show');
+                        $("#Q5").show();
+                    }
+                });
+
+                $("input[name='qt5']").click(function () {
+                    if ($("#q5_no").is(":checked")) {
+                        $("#Q6").show();
+                    } else if ($("#q5_yes").is(":checked")){
+                        $('#submodal5').modal('show');
+                        $("#Q6").show();
+                    }
+                });
+
+                $("input[name='qt6']").click(function () {
+                    if ($("#q6_no").is(":checked")) {
+                        $("#Header2").show();
+                    } else if ($("#q6_yes").is(":checked")){
+                        $('#submodal6').modal('show');
+                        $("#Header2").show();
+                    }
+                });            
+              
+            });
+        </script>
+
+        <!-- SubModal1 for Tips -->
+          <div class="modal fade" id="submodal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>The Return-path email address receives the delivery status information. To get undelivered emails, or any other bounced back messages, our emails’ server uses Return-Path. The recipient server uses this field to identify spoof emails. In this process, the recipient server retrieves all the permitted IPs related to the sender domain and matches with the sender IP. If it fails to provide any match, we can consider the email to be spam.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal2 for Tips -->
+          <div class="modal fade" id="submodal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>This field shows information related to all hops, through which the email was transferred. The last entry shows the initial address of the email sender.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal3 for Tips -->
+          <div class="modal fade" id="submodal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>This field’s email address is used to receive the reply message. It can differ from the address in spoof emails.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal4 for Tips -->
+          <div class="modal fade" id="submodal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>SPF (Sender Policy Framework) helps to verify that messages appearing from a particular domain were sent from servers under control of the actual owner. If the value is Pass, then the email source is valid</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal5 for Tips -->
+          <div class="modal fade" id="submodal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>Domain Keys Identified Mail (DKIM) signs the outgoing email with an encrypted signature inside the headers and the recipient email server decrypts it, using a shared public key to check whether the message was changed in transit.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal6 for Tips -->
+          <div class="modal fade" id="submodal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>These headers are known as experimental or extension headers. They are usually added by the recipient mailbox providers. Fields like X-FOSE-Spam and X-Spam-Score are used to identify spam emails.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
               <!-- ========================================== -->
 
-              <li class="list-group-item">  <!-- SECTION 2 START -->
-                <p>Are there any URLs or hypertext links in the email body of the message? 
+              <li class="list-group-item"  id="Header2" style="display: none;">  <!-- SECTION 2 START -->
+                <p class="fw-bold">Are there any URLs or hypertext links in the email body of the message? 
                   
                   <input class="form-check-input" type="radio" id="qust2_no" value="no" name="quest2" />
                   <label class="form-check-label" for="flexRadioDefault2">
@@ -71,16 +325,113 @@
                 <div id="qust2_sub_div" style="display: none;"> <!-- Display if yes -->
                   <ul>
                     <hr>
-                    <li>Is there an unfamiliar domain name when you hover over the links?</li>
-                    <li>Copy the links and paste them into a separate environment, such as an online browser service like Browserling https://www.browserling.com/. Is it displaying any malicious behaviour, such as downloading files, navigating to the wrong domain, prompting for software installation, and so on?</li>
+                    <li id="Q7" style="display: ;"><p>Is there an unfamiliar domain name when you hover over the links?
+                    <input class="form-check-input" type="radio" id="q7_no" value="no" name="qt7" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q7_yes" value="yes" name="qt7" />
+                        <label class="form-check-label">
+                          Yes
+                        </label5>
+                        </p>
+                      </li>
+
+                    <li id="Q8" style="display: none;"><p>Copy the links and paste them into a separate environment, such as an online browser service like Browserling <a href="https://www.browserling.com/">Browserling</a>. Is it displaying any malicious behaviour, such as downloading files, navigating to the wrong domain, prompting for software installation, and so on?
+                    <input class="form-check-input" type="radio" id="q8_no" value="no" name="qt8" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q8_yes" value="yes" name="qt8" />
+                        <label class="form-check-label">
+                          Yes
+                        </label5>
+                        </p>
+                      </li>
                   </ul>
                 </div> <!-- End display -->
               </li> <!-- SECTION 2 END -->
 
+              <script>
+            $(function () {
+
+              $("input[name='quest2']").click(function () {
+                    if ($("#qust2_yes").is(":checked")) {
+                        $("#qust2_sub_div").show();
+                    } else if ($("#qust2_no").is(":checked")){
+                        $("#Header3").show();
+                    }
+                });
+
+              $("input[name='qt7']").click(function () {
+                    if ($("#q7_no").is(":checked")) {
+                        $("#Q8").show();
+                    } else if ($("#q7_yes").is(":checked")){
+                        $('#submodal7').modal('show');
+                        $("#Q8").show();
+                    }
+                });
+
+              $("input[name='qt8']").click(function () {
+                    if ($("#q8_no").is(":checked")) {
+                        $("#Header3").show();
+                    } else if ($("#q7_yes").is(":checked")){
+                        $('#submodal8').modal('show');
+                        $("#Header3").show();
+                    }
+                });
+
+                 
+            });
+        </script>
+
+        <!-- SubModal7 for Tips -->
+          <div class="modal fade" id="submodal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>Be careful with spellings such as digits replacing letters and missing syllables in double-letter words.</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SubModal8 for Tips -->
+          <div class="modal fade" id="submodal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <p>Malicious links will redirect to malicious domains or ask you to download or install a file</p>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
               <!-- ========================================================== -->
 
-              <li class="list-group-item">  <!-- SECTION 3 START -->
-                <p>Does the email have attachments? 
+
+
+
+              <li class="list-group-item"  id="Header3" style="display: none;">  <!-- SECTION 3 START -->
+                <p class="fw-bold">Does the email have attachments? 
                   
                   <input class="form-check-input" type="radio" id="qust3_no" value="no" name="quest3" />
                   <label class="form-check-label" for="flexRadioDefault3">
@@ -96,67 +447,129 @@
                 <div id="qust3_sub_div" style="display: none;"> <!-- Display if yes -->
                   <ul>
                     <hr>
-                    <li>Do you have an isolated environment where you can download it?</li>
-                    <li>Can you contact your IT security or support team about it?</li>
+                    <li id="Q9" style="display:;"><p>Do you have an isolated environment where you can download it?
+                    <input class="form-check-input" type="radio" id="q9_no" value="no" name="qt9" />
+                        <label class="form-check-label">
+                          No
+                        </label>
+                        <input class="form-check-input" type="radio" id="q9_yes" value="yes" name="qt9" />
+                        <label class="form-check-label">
+                          Yes
+                        </label5>
+                        </p>
+                        <p id="Q9-1" style="display: none;">Download the email attachment on it and use the file command from the command prompt to check the file properties and see if it actually matches the correct file extension and metadata. (Files can be disguised to make them act like a trojan horse)
+                        </p>
+                      </li>
+
+                    <p id="Q10" style="display: none;" class="text-center text-danger">Please contact your IT security team with any "Yes" respsonses in this checklist!</p>
                   </ul>
                 </div> <!-- End display -->
               </li> <!-- SECTION 3 END -->
 
             </ul>
+            <div class="text-center">
+            <a class="btn btn-primary m-1 align-content-center" href="index.html" role="button">Reset</a>
+            </div>
+          </div>
+
+          <script>
+            $("input[name='quest3']").click(function () {
+                    if ($("#qust3_yes").is(":checked")) {
+                        $("#qust3_sub_div").show();
+                    } else if ($("#qust3_no").is(":checked")){
+                        $("#Header3").show();
+                    }
+                }); 
+
+            $("input[name='qt9']").click(function () {
+                    if ($("#q9_no").is(":checked")) {
+                        $("#Q10").show();
+                    } else if ($("#q9_yes").is(":checked")){
+                        $('#submodal9').modal('show');
+                        $("#Q10").show();
+                    }
+                });  
+              
+        </script>
+
+         <!-- SubModal9 for Tips -->
+          <div class="modal fade" id="submodal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-danger" id="exampleModalLabel">Suspicious Malicious Content or Spam</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <ul>
+                      <li><p>Download the email attachment on it and use the file command from the command prompt to check the file properties and see if it actually matches the correct file extension and metadata. (Files can be disguised to make them act like a trojan horse)</p></li>
+                      <li><p>Change the file extension to ‘.exe’ if it’s not an executable and simply run <a href="https://www.fireeye.com/services/freeware/apatedns.html">Apate DNS </a>and Windows Network Monitoring tool before execution in the isolated environment to review its behaviour. (Executables usually interact with the file system, registry, network, and spawn processes or services which Apate DNS can depict)</p></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- ====================== -->
+
+
+        
+
+          <!-- Modal for Tips -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center text-info" id="exampleModalLabel">Recommended Tip to Avoid being Phished!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <ul>
+                      <li><p>Never trust the email sender. Always check the basic identity verification before responding to any email.</p></li>
+                      <li><p>Never click on any links or open any attachment if the email sender is not genuine.</p></li>
+                      <li><p>Attackers often use arbitrary domain names. So read the site address carefully to avoid the typo-squatting trap.</p></li>
+                      <li><p>Cross-check the website background before providing any personal information like name, address, login details, financial information etc.</p></li>
+                      <li><p>If you realise that you have already entered your credentials to any unauthorised sources please change your password immediately.</p></li>
+                      <li><p>Use Antivirus or Antimalware to get maximum security against malicious URLs and IPs.</p></li>
+                      <li><p>For protection from drive-by downloads and real-time threats associated with email attachments, enabling Endpoint Security on suspicious attachment detection is highly recommended and this can also protect against Tactics Technique and Procedure (TTP) used by Advanced Persistent Threats.</p></li>
+                      <li><p>Suspicious links can be submitted to <a href="http://trustedsource.org">Trusted Source</a> to check the status and to submit for review.</p></li>
+                      <li><p>Suspicious files can be submitted to <a href="https://www.mcafee.com/enterprise/en-us/threat-center/how-to-submit-sample.html">McAfee Labs</a> </p></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="modal-footer text-center">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+              </div>
+            </div>
           </div>
 
 
          <script>
             $(function () {
-                $("input[name='quest1']").click(function () {
-                    if ($("#qust1_yes").is(":checked")) {
-                        $("#qust1_sub_div").show();
-                    } else {
-                        $("#qust1_sub_div").hide();
+            
+
+          // Trigger modal if all No selected
+
+                $("input[type='radio']").click(function () {
+                    if ($("#qust2_no").is(":checked")&&$("#qust3_no").is(":checked")&&$("#qust1_no").is(":checked")) {
+                        $('#exampleModal').modal('show');
                     }
                 });
 
-
-                $("input[name='quest2']").click(function () {
-                    if ($("#qust2_yes").is(":checked")) {
-                        $("#qust2_sub_div").show();
-                    } else {
-                        $("#qust2_sub_div").hide();
-                    }
-                });
-
-                $("input[name='quest3']").click(function () {
-                    if ($("#qust3_yes").is(":checked")) {
-                        $("#qust3_sub_div").show();
-                    } else {
-                        $("#qust3_sub_div").hide();
-                    }
-                });
-
+              
             });
         </script>
 
 
-          <!-- <script type="text/javascript">
-            function showDiv() {
-               document.getElementById('Q1').style.display = "block";
-            }
-          </script> -->
 
-
-          <!-- <div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
-          <input type="radio" name="answer" value="Show Div" onclick="showDiv()" />
-
-          <script type="text/javascript">
-            function showDiv() {
-               document.getElementById('welcomeDiv').style.display = "block";
-            }
-          </script> -->
-
-
-          <div class="text-center mb-2">
-            <button type="button" class="btn btn-primary btn-lg">Check</button>
-          </div>
 
         </div>
       </div>
